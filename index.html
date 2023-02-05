@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>URL to QR Code Converter</title>
+    <script>
+      function generateQRCode() {
+        const url = document.getElementById("url").value;
+        const qrCode = document.getElementById("qr-code");
+        qrCode.innerHTML = "";
+        const qrImage = new Image();
+        qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(url)}&size=100x100`;
+        qrCode.appendChild(qrImage);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>URL to QR Code Converter</h1>
+    <form>
+      <label for="url">Enter URL:</label>
+      <input type="text" id="url" name="url">
+      <input type="button" value="Convert" onclick="generateQRCode()">
+    </form>
+    <div id="qr-code"></div>
+  </body>
+</html>
